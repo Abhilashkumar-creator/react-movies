@@ -1,0 +1,8 @@
+React has three features
+1) Single Page Application(SPA)
+2)Reusability
+3)Virtual DOM (DOM Document object model)
+4)never use document.query or related in react as it effects the real dom and eats time
+5)Conditional Styling:Changing CSS property Alone
+6)Conditional Rendering:Removing DOM
+7)React Routing: 

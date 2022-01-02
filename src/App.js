@@ -3,11 +3,13 @@ import { double } from"./Counter"
 import "./App.css";
 import { MovieList } from "./MovieList";
 import Button from '@mui/material/Button';
-import {Switch,Route,Link, Redirect,useParams} from "react-router-dom"
+import {Switch,Route,Link, Redirect,useParams,useHistory} from "react-router-dom"
 import { INITIAL_MOVIES } from "./INITIAL_MOVIES";
 import TextField from '@mui/material/TextField';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 function App() {
   const [movies, setMovies] = useState(INITIAL_MOVIES);
   
@@ -80,7 +82,9 @@ function App() {
       <input value ={summary} onChange={(event)=> setSummary(event.target.value) } placeholder="Enter a movie summary" />
       <input value ={rating} onChange={(event)=> setrating(event.target.value) } placeholder="Enter a movie rating" /> */}
       {/* <button ></button> */}
-      <Button className= "movie-button" variant="contained" onClick={addMovie}>Add movie</Button>
+      <Button className= "movie-button" 
+      variant="contained" 
+      onClick={addMovie}>Add movie</Button>
       </div>
      <MovieList movies={movies} /> 
      
@@ -134,6 +138,7 @@ export default App;
 function MovieDetails({ movies }){
   const { id }=useParams();
   const movie = movies[id];
+  const history = useHistory()
   console.log(movies,movie)
   // return <h1> Movie {id}</h1>
   
@@ -148,7 +153,17 @@ function MovieDetails({ movies }){
   <div className="movie-specs">
     <h3 className="movie-name">{movie.name}</h3>
     <p className="movie-rating">{movie.rating}</p>
+    <Button
+    onClick={() =>history.goBack()}
+    variant = "contained"
+    startIcon={<ArrowBackIcon/>}>
+    </Button>
+    <Button
+    onClick={() =>history.goForward()}
+    variant = "contained"
+    startIcon={<ArrowForwardIcon/>}>
+    </Button>
   </div>
  <p className="movie-summary">{movie.summary}</p>
- </div>
+  </div>
 }

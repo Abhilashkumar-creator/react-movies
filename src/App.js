@@ -3,13 +3,13 @@ import { double } from"./Counter"
 import "./App.css";
 import { MovieList } from "./MovieList";
 import Button from '@mui/material/Button';
-import {Switch,Route,Link, Redirect,useParams,useHistory} from "react-router-dom"
+import {Switch,Route,Link, Redirect} from "react-router-dom"
 import { INITIAL_MOVIES } from "./INITIAL_MOVIES";
 import TextField from '@mui/material/TextField';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import { MovieDetails } from "./MovieDetails";
+import { AddColor } from "./AddColor";
 function App() {
   const [movies, setMovies] = useState(INITIAL_MOVIES);
   
@@ -104,66 +104,3 @@ function App() {
   );
 }
 export default App;
- function AddColor(){
-   const [color, setColor] = useState("");
-   const styles = {backgroundColor: color}
-   //Tying ->onChange -> event.target.value (content) -> setColor
-   //map function is used to loop in react
-
-   const [colors, setColors] = useState([]);
-   return(
-     <div>
-       <input
-       style={styles}
-       onChange={(event)=>setColor(event.target.value)}
-       placeholder="Enter a color"
-       />
-       <button onClick={()=> setColors([...colors,color])}>Add color</button>
-              {colors.map((clr, index)=>(
-         <ColorBox key={index} clr={clr}/>
-       ))}
-     </div>
-   );
- }
-
- function ColorBox({ clr }){
-   const styles ={
-     backgroundColor:clr,
-     height:"50px",
-     width:"200px",
-     margin:"10px 0px",
-   };
-   return <div style={styles}></div>
- }
-function MovieDetails({ movies }){
-  const { id }=useParams();
-  const movie = movies[id];
-  const history = useHistory()
-  console.log(movies,movie)
-  // return <h1> Movie {id}</h1>
-  
-  return <div className="movie-detail-container">
-    <iframe 
-    width="100%" 
-    height="600" 
-    src={movie.trailer}
-    title="YouTube video player" frameborder="0" 
-    allow="accelerometer; 
-    autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-  <div className="movie-specs">
-    <h3 className="movie-name">{movie.name}</h3>
-    <p className="movie-rating">{movie.rating}</p>
-    <Button
-    onClick={() =>history.goBack()}
-    variant = "contained"
-    startIcon={<ArrowBackIcon/>}>
-    </Button>
-    <Button
-    onClick={() =>history.goForward()}
-    variant = "contained"
-    startIcon={<ArrowForwardIcon/>}>
-    </Button>
-  </div>
- <p className="movie-summary">{movie.summary}</p>
-  </div>
-}

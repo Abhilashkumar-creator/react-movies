@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { double } from"./Counter"
 import "./App.css";
-import { MovieList } from "./MovieList";
+import { MovieList } from "./MovieList.1";
 import Button from '@mui/material/Button';
 import {Switch,Route,Link, Redirect} from "react-router-dom"
 import { INITIAL_MOVIES } from "./INITIAL_MOVIES";

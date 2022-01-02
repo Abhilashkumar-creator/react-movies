@@ -85,3 +85,9 @@ body{
   justify-content: space-around;
   margin: 10px 10px;
 } */
+.app-movie-form{
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin: 24px;
+}

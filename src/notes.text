@@ -9,3 +9,7 @@ React has three features
 8)Grid system
 9)Regexone.com
 10) Redirect
+11)props drilling
+Creating-->createContext
+Publisher-->provider -context.provider
+Subscriber -->useContext - useContext(context)

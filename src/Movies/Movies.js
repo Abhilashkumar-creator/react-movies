@@ -9,7 +9,7 @@ import CardContent from '@mui/material/CardContent';
 import CardActions from '@mui/material/CardActions';
 import InfoIcon from '@mui/icons-material/Info';
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
-export function Movies({ name, rating, summary, poster,index,deleteButton }) {
+export function Movies({ name, rating, summary, poster,index,deleteButton,editButton }) {
     const [show, setShow] = useState(true);
     const history =useHistory()
     const styles ={display : show ? "block":"none"}
@@ -41,6 +41,7 @@ export function Movies({ name, rating, summary, poster,index,deleteButton }) {
     <CardActions>
     <Counter />
     {deleteButton}
+    {editButton}
     </CardActions>
     </CardContent>
   </Card>
